@@ -11,14 +11,10 @@ ApiResponse<T> _$ApiResponseFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     ApiResponse<T>(
-      status: $enumDecodeNullable(_$ApiStatusEnumMap, json['status']),
+      page: json['page'] as int?,
       data: _$nullableGenericFromJson(json['data'], fromJsonT),
-      message: (json['message'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
-      errors: (json['errors'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
+      totalPages: json['total_pages'] as int?,
+      totalResults: json['total_results'] as int?,
     );
 
 Map<String, dynamic> _$ApiResponseToJson<T>(
@@ -26,23 +22,11 @@ Map<String, dynamic> _$ApiResponseToJson<T>(
   Object? Function(T value) toJsonT,
 ) =>
     <String, dynamic>{
-      'status': _$ApiStatusEnumMap[instance.status],
+      'page': instance.page,
       'data': _$nullableGenericToJson(instance.data, toJsonT),
-      'message': instance.message,
-      'errors': instance.errors,
+      'total_pages': instance.totalPages,
+      'total_results': instance.totalResults,
     };
-
-const _$ApiStatusEnumMap = {
-  ApiStatus.success: 'success',
-  ApiStatus.fail: 'fail',
-  ApiStatus.notFound: 'notFound',
-  ApiStatus.parametersNotValid: 'parametersNotValid',
-  ApiStatus.applicationException: 'applicationException',
-  ApiStatus.sessionExists: 'sessionExists',
-  ApiStatus.unauthorized: 'unauthorized',
-  ApiStatus.oTPRequired: 'oTPRequired',
-  ApiStatus.emailVerifyRequired: 'emailVerifyRequired',
-};
 
 T? _$nullableGenericFromJson<T>(
   Object? input,

@@ -11,6 +11,8 @@ class UIHelper {
 
   UIHelper._internal();
 
+  TextTheme textTheme(BuildContext context) => Theme.of(context).textTheme;
+
   final int _temporaryScreenDurationInSeconds = 3;
 
   void showSnackBarMessage(BuildContext context, {required String message}) {
@@ -21,6 +23,9 @@ class UIHelper {
       ),
     );
   }
+
+  void hideCurrentSnackBar(BuildContext context) =>
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
   showProgressIndicator(BuildContext context) => showDialog(
         context: context,

@@ -6,8 +6,7 @@ import 'package:xera_task/models/bloc/settings_blocs/settings_bloc/local_setting
 import 'package:xera_task/models/utilities/localizations/locales_constants.dart';
 import 'package:xera_task/models/utilities/themes/theme_dark.dart';
 import 'package:xera_task/models/utilities/themes/theme_light.dart';
-import 'package:xera_task/ui/screens/home/home_screen.dart';
-import 'package:xera_task/ui/screens/splash/splash_screen.dart';
+import 'package:xera_task/ui/screens/main_navigation/main_navigation.dart';
 
 import 'repository/networks/services/http_overrides.dart';
 
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<LocalSettingsBloc>(
           create: (ctx) => LocalSettingsBloc(),
-        ),
+        )
       ],
       child: BlocBuilder<LocalSettingsBloc, LocalSettingsBlocState>(
           builder: (context, state) {
@@ -39,10 +38,9 @@ class MyApp extends StatelessWidget {
           supportedLocales: AppLocalizations.supportedLocales,
           localeResolutionCallback: LocalesConstants.localeResolutionCallback,
           locale: state.settings.locale,
-          initialRoute: SplashScreen.id,
+          initialRoute: MainNavigation.id,
           routes: {
-            HomeScreen.id: (context) => const HomeScreen(),
-            SplashScreen.id: (context) => const SplashScreen()
+            MainNavigation.id: (context) => const MainNavigation(),
           },
         );
       }),

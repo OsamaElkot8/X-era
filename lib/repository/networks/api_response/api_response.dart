@@ -1,16 +1,18 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:xera_task/repository/networks/enums/api_status.dart';
+import 'package:xera_task/repository/networks/constants/shared_keys.dart';
 
 part 'api_response.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true)
 class ApiResponse<T> {
-  ApiStatus? status;
+  int? page;
   T? data;
-  Map<String, String>? message;
-  Map<String, String>? errors;
+  @JsonKey(name: NetworkSharedKeys.totalPages)
+  final int? totalPages;
+  @JsonKey(name: NetworkSharedKeys.totalResults)
+  final int? totalResults;
 
-  ApiResponse({this.status, this.data, this.message, this.errors});
+  ApiResponse({this.page, this.data, this.totalPages, this.totalResults});
 
   factory ApiResponse.fromJson(
       Map<String, dynamic> json, T Function(Object? json) fromJsonT) {
