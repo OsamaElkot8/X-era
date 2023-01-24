@@ -10,6 +10,6 @@ class DiscoverMovieThumbnail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultNetworkImage(
-        imageUrl: thumbnail, width: _imageHeight, height: _imageWidth);
+        imageUrl: thumbnail, width: _imageWidth, height: _imageHeight);
   }
 }

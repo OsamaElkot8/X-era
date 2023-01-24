@@ -7,33 +7,34 @@ import 'package:xera_task/models/entities/movie/movie.dart';
 import 'package:xera_task/repository/networks/api_clients/movies/movies_api_client.dart';
 import 'package:xera_task/repository/networks/api_response/api_response.dart';
 
-part 'discover_event.dart';
-part 'discover_state.dart';
+part 'search_event.dart';
+part 'search_state.dart';
 
-class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
+class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final MoviesApiClient moviesApiClient;
   final BuildContext context;
+  late String query;
   int _page = 1;
   bool isFetching = false;
 
-  DiscoverBloc(
+  SearchBloc(
       {required this.context,
       required this.moviesApiClient,
-      DiscoverState? initialState})
-      : super(initialState ?? DiscoverInitial()) {
-    on<DiscoverMovies>((event, emit) async {
+      SearchState? initialState})
+      : super(initialState ?? SearchInitial()) {
+    on<SearchMovies>((event, emit) async {
       try {
-        emit(DiscoverLoading(
+        emit(SearchLoading(
             message: AppLocalizations.of(context)!.loadingMovies));
         final ApiResponse<List<Movie>> result =
-            await moviesApiClient.discoverMovies(page: _page);
-        emit(DiscoverLoaded(
+            await moviesApiClient.searchMovies(query: query, page: _page);
+        emit(SearchLoaded(
             movies: result.results!,
             // ignore: use_build_context_synchronously
             message: AppLocalizations.of(context)!.noMoreMovies));
         _page++;
       } catch (e) {
-        emit(DiscoverError(error: e.toString()));
+        emit(SearchError(error: e.toString()));
       }
     });
   }

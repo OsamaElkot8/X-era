@@ -12,7 +12,7 @@ ApiResponse<T> _$ApiResponseFromJson<T>(
 ) =>
     ApiResponse<T>(
       page: json['page'] as int?,
-      data: _$nullableGenericFromJson(json['data'], fromJsonT),
+      results: _$nullableGenericFromJson(json['results'], fromJsonT),
       totalPages: json['total_pages'] as int?,
       totalResults: json['total_results'] as int?,
     );
@@ -23,7 +23,7 @@ Map<String, dynamic> _$ApiResponseToJson<T>(
 ) =>
     <String, dynamic>{
       'page': instance.page,
-      'data': _$nullableGenericToJson(instance.data, toJsonT),
+      'results': _$nullableGenericToJson(instance.results, toJsonT),
       'total_pages': instance.totalPages,
       'total_results': instance.totalResults,
     };

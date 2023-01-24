@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xera_task/models/entities/movie/movie.dart';
+import 'package:xera_task/models/utilities/extensions/movie_extension.dart';
 import 'package:xera_task/ui/screens/discover/movie/overview.dart';
 import 'package:xera_task/ui/screens/discover/movie/release_date.dart';
 import 'package:xera_task/ui/screens/discover/movie/thumbnail.dart';
@@ -33,7 +34,7 @@ class DiscoverMovie extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          DiscoverMovieThumbnail(thumbnail: movie.posterPath),
+          DiscoverMovieThumbnail(thumbnail: movie.thumbnailURL()),
           Padding(
             padding: _cardDetailsPadding,
             child: Column(

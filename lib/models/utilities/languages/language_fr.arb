@@ -3,5 +3,6 @@
     "search": "Search",
     "loadingMovies": "Loading Movies",
     "noMoreMovies": "No More Movies",
-    "noMoviesYet": "No Movies Yet!"
+    "noMoviesYet": "No Movies Yet!",
+    "noMoviesFound": "No Movies Found!"
 }

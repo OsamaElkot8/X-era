@@ -7,12 +7,10 @@ import 'package:xera_task/repository/networks/api_response/api_response.dart';
 import 'package:xera_task/repository/networks/constants/end_points.dart';
 import 'package:xera_task/repository/networks/constants/shared_keys.dart';
 import 'package:xera_task/repository/networks/services/dio_services.dart';
-import 'package:xera_task/repository/networks/services/headers.dart';
 
 part 'movies_api_client.g.dart';
 
 @RestApi(baseUrl: NetworkEndPoints.baseUrl)
-@Headers(NetworkHeaders.requestHeader)
 abstract class MoviesApiClient {
   factory MoviesApiClient() => _MoviesApiClient(NetworkDioServices.dio);
 

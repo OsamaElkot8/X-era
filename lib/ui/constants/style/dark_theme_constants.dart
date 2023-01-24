@@ -27,6 +27,9 @@ class DarkThemeConstants extends UiConstantsManager {
   Color get colorOnSecondary => Colors.grey;
 
   @override
+  Color get colorMovieSearchFieldShadow => Colors.grey;
+
+  @override
   Color get colorSecondaryContainer => const Color(0xffE9E9EB);
 
   @override

@@ -13,7 +13,7 @@ import 'sub_title_text.dart';
 class DefaultTextField extends StatefulWidget {
   final String? initialValue, hint, subTitle;
   final TextEditingController? controller;
-  final bool obscuringEnabled;
+  final bool obscuringEnabled, clearIcon;
   final bool? enabled, readOnly;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
@@ -33,7 +33,8 @@ class DefaultTextField extends StatefulWidget {
       this.textInputType,
       this.prefixIcon,
       this.subTitle,
-      this.suffix})
+      this.suffix,
+      this.clearIcon = false})
       : super(key: key);
 
   @override
@@ -122,6 +123,11 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
   Widget? _suffixView() {
     if (widget.suffix != null) {
       return widget.suffix;
+    }
+
+    if (widget.clearIcon) {
+      return IconButton(
+          onPressed: _controller.clear, icon: const Icon(Icons.clear));
     }
 
     if (widget.obscuringEnabled) {

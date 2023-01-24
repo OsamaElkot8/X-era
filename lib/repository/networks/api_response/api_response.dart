@@ -6,13 +6,13 @@ part 'api_response.g.dart';
 @JsonSerializable(genericArgumentFactories: true)
 class ApiResponse<T> {
   int? page;
-  T? data;
+  T? results;
   @JsonKey(name: NetworkSharedKeys.totalPages)
   final int? totalPages;
   @JsonKey(name: NetworkSharedKeys.totalResults)
   final int? totalResults;
 
-  ApiResponse({this.page, this.data, this.totalPages, this.totalResults});
+  ApiResponse({this.page, this.results, this.totalPages, this.totalResults});
 
   factory ApiResponse.fromJson(
       Map<String, dynamic> json, T Function(Object? json) fromJsonT) {

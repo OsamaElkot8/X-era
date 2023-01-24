@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xera_task/ui/components/icons/image_error_view.dart';
-import 'package:xera_task/ui/components/icons/image_placeholder_view.dart';
+import 'package:xera_task/ui/components/skeletons/rectangular_skeleton.dart';
 import 'package:xera_task/ui/constants/constants.dart';
 
 class DefaultNetworkImage extends StatelessWidget {
@@ -32,21 +32,12 @@ class DefaultNetworkImage extends StatelessWidget {
             ImageChunkEvent? loadingProgress) {
           if (loadingProgress == null) return child;
           return placeholder ??
-              ImagePlaceholderView(
-                iconSize: _placeholderSize,
+              RectangularSkeleton(
+                height: height,
+                width: width,
               );
         },
         errorBuilder: (ctx, exception, stackTrace) =>
-            errorView ??
-            ImageErrorView(
-              iconSize: _placeholderSize,
-            ));
-  }
-
-  double? get _placeholderSize {
-    if (height == null || width == null) {
-      return null;
-    }
-    return (height! + width!) / 2;
+            errorView ?? const ImageErrorView());
   }
 }

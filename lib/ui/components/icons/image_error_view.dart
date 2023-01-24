@@ -19,10 +19,12 @@ class ImageErrorView extends StatelessWidget {
           .instance
           .currentThemeModeConstants(localSettings: settings);
 
-      return Icon(
-        Icons.error,
-        size: iconSize,
-        color: currentThemeModeConstants.colorDefaultImageErrorIconColor,
+      return Center(
+        child: Icon(
+          Icons.error,
+          size: iconSize,
+          color: currentThemeModeConstants.colorDefaultImageErrorIconColor,
+        ),
       );
     });
   }

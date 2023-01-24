@@ -6,7 +6,7 @@ class DiscoverMovieOverview extends StatelessWidget {
   const DiscoverMovieOverview({Key? key, this.overview}) : super(key: key);
 
   TextStyle? _textTheme(BuildContext context) =>
-      UIHelper.instance.textTheme(context).bodyText1;
+      UIHelper.instance.textTheme(context).headline3;
 
   @override
   Widget build(BuildContext context) {
