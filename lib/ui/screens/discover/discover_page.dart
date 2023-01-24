@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:xera_task/models/bloc/discover/discover_bloc.dart';
 import 'package:xera_task/models/bloc/settings_blocs/settings_bloc/local_settings_bloc.dart';
 import 'package:xera_task/models/bloc/settings_blocs/settings_bloc/local_settings_bloc_state.dart';
@@ -46,7 +47,6 @@ class DiscoverPage extends StatelessWidget {
           width: double.infinity,
           child: BlocProvider<DiscoverBloc>(
             create: (context) => DiscoverBloc(
-              context: context,
               moviesApiClient: MoviesApiClient(),
             )..add(DiscoverMovies()),
             child: Center(
@@ -56,15 +56,15 @@ class DiscoverPage extends StatelessWidget {
 
                   switch (discoverState.runtimeType) {
                     case DiscoverLoading:
-                      final casted = discoverState as DiscoverLoading;
                       uIHelper.showSnackBarMessage(context,
-                          message: casted.message);
+                          message: AppLocalizations.of(context)!.loadingMovies);
                       break;
                     case DiscoverLoaded:
                       final casted = discoverState as DiscoverLoaded;
                       if (casted.movies.isEmpty) {
                         uIHelper.showSnackBarMessage(context,
-                            message: casted.message);
+                            message:
+                                AppLocalizations.of(context)!.noMoreMovies);
                       }
                       break;
                     case DiscoverError:

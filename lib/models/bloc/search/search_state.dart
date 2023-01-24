@@ -5,20 +5,12 @@ abstract class SearchState {}
 
 class SearchInitial extends SearchState {}
 
-class SearchLoading extends SearchState {
-  final String message;
-
-  SearchLoading({
-    required this.message,
-  });
-}
+class SearchLoading extends SearchState {}
 
 class SearchLoaded extends SearchState {
   final List<Movie> movies;
-  final String message;
   SearchLoaded({
     required this.movies,
-    required this.message,
   });
 }
 

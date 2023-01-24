@@ -5,20 +5,12 @@ abstract class DiscoverState {}
 
 class DiscoverInitial extends DiscoverState {}
 
-class DiscoverLoading extends DiscoverState {
-  final String message;
-
-  DiscoverLoading({
-    required this.message,
-  });
-}
+class DiscoverLoading extends DiscoverState {}
 
 class DiscoverLoaded extends DiscoverState {
   final List<Movie> movies;
-  final String message;
   DiscoverLoaded({
     required this.movies,
-    required this.message,
   });
 }
 

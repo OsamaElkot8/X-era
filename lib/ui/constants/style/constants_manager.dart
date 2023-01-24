@@ -31,7 +31,8 @@ abstract class UiConstantsManager {
   Color get colorInputBorderFillColor;
   Color get colorAppDivider;
   Color get colorDefaultProgressIndicatorBackground;
-  Color get colorMovieSearchFieldShadow;
+  Color get colorTextFieldShadow;
+  Color get colorTextFieldBackground;
 
   Color get colorDefaultTextButton;
   Color get colorDisabledColor;

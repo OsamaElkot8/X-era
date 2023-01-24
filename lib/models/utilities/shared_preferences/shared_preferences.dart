@@ -25,6 +25,21 @@ class SharedPreferences {
     return _prefs;
   }
 
+  Future<List<String>> getMoviesSearchHistory() async =>
+      (await _getPrefs())!
+          .getStringList(SharedPreferencesConstants.keyMoviesSearchHistory) ??
+      [];
+
+  Future<bool> saveToMoviesSearchHistory({required String query}) async {
+    List<String> searchHistory = await getMoviesSearchHistory();
+
+    //Place it at first in the set
+    searchHistory.insert(0, query);
+    return await (await _getPrefs())!.setStringList(
+        SharedPreferencesConstants.keyMoviesSearchHistory,
+        searchHistory.toSet().toList());
+  }
+
   Future<bool> setBaseUrl(String url) async {
     return await (await _getPrefs())!
         .setString(SharedPreferencesConstants.keyBaseUrl, url);

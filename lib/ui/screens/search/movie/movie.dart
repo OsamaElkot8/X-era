@@ -12,7 +12,9 @@ class SearchMovie extends StatelessWidget {
 
   final double _viewHorizontalPaddingSpace = 18.0,
       _viewVerticalPaddingSpace = 12.0,
-      _horizontalDividerWidth = 10.0;
+      _horizontalDividerWidth = 10.0,
+      _titleDividerHeight = 6.0,
+      _overviewDividerHeight = 6.0;
 
   EdgeInsetsGeometry get _viewPadding => EdgeInsets.symmetric(
       vertical: _viewHorizontalPaddingSpace,
@@ -39,10 +41,16 @@ class SearchMovie extends StatelessWidget {
                       title: movie.title,
                     ),
                   ),
+                  SizedBox(
+                    height: _titleDividerHeight,
+                  ),
                   Flexible(
                     child: SearchMovieOverview(
                       overview: movie.overview,
                     ),
+                  ),
+                  SizedBox(
+                    height: _overviewDividerHeight,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,

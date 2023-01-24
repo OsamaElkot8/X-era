@@ -38,7 +38,7 @@ class _MainNavigationState extends State<MainNavigation> {
   Widget _pages() {
     List<Widget> pages = [
       DiscoverPage(),
-      const SearchPage(),
+      SearchPage(),
     ];
     return IndexedStack(
       index: _currentIndex,

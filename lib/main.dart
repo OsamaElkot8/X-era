@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:xera_task/models/bloc/search/search_bloc.dart';
 import 'package:xera_task/models/bloc/settings_blocs/settings_bloc/local_settings_bloc.dart';
 import 'package:xera_task/models/bloc/settings_blocs/settings_bloc/local_settings_bloc_state.dart';
 import 'package:xera_task/models/utilities/localizations/locales_constants.dart';
 import 'package:xera_task/models/utilities/themes/theme_dark.dart';
 import 'package:xera_task/models/utilities/themes/theme_light.dart';
+import 'package:xera_task/repository/networks/api_clients/movies/movies_api_client.dart';
 import 'package:xera_task/ui/screens/main_navigation/main_navigation.dart';
 
 import 'repository/networks/services/http_overrides.dart';
@@ -24,6 +26,11 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<LocalSettingsBloc>(
           create: (ctx) => LocalSettingsBloc(),
+        ),
+        BlocProvider<SearchBloc>(
+          create: (ctx) => SearchBloc(
+            moviesApiClient: MoviesApiClient(),
+          ),
         )
       ],
       child: BlocBuilder<LocalSettingsBloc, LocalSettingsBlocState>(

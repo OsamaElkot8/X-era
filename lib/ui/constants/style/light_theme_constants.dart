@@ -27,7 +27,10 @@ class LightThemeConstants extends UiConstantsManager {
   Color get colorOnSecondary => Colors.grey;
 
   @override
-  Color get colorMovieSearchFieldShadow => Colors.grey;
+  Color get colorTextFieldShadow => Colors.grey;
+
+  @override
+  Color get colorTextFieldBackground => Colors.white;
 
   @override
   Color get colorSecondaryContainer => const Color(0xffE9E9EB);

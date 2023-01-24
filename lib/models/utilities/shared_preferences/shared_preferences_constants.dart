@@ -1,6 +1,7 @@
 class SharedPreferencesConstants {
   static const String keyLocale = 'locale';
   static const String keyTheme = 'theme';
+  static const String keyMoviesSearchHistory = 'movies_search_history';
   static const String keyBaseUrl = 'base_url';
   static const String keyUserToken = 'user_token';
   static const String keyOnBoardingSeen = 'on_boarding_seen';
