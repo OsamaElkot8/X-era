@@ -109,7 +109,9 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
           enabled: widget.enabled,
           initialValue: widget.initialValue,
           readOnly: widget.readOnly!,
-          onChanged: widget.onChanged,
+          onChanged: (val) => setState(() {
+            widget.onChanged?.call(val);
+          }),
           onFieldSubmitted: widget.onFieldSubmitted,
         ),
       );

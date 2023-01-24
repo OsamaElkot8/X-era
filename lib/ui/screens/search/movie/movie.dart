@@ -34,31 +34,22 @@ class SearchMovie extends StatelessWidget {
             ),
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Flexible(
-                    child: SearchMovieTitle(
-                      title: movie.title,
-                    ),
+                  SearchMovieTitle(
+                    title: movie.title,
                   ),
                   SizedBox(
                     height: _titleDividerHeight,
                   ),
-                  Flexible(
-                    child: SearchMovieOverview(
-                      overview: movie.overview,
-                    ),
+                  SearchMovieOverview(
+                    overview: movie.overview,
                   ),
                   SizedBox(
                     height: _overviewDividerHeight,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SearchMovieReleaseDate(
-                        releaseDate: movie.releaseDate,
-                      )
-                    ],
+                  SearchMovieReleaseDate(
+                    releaseDate: movie.releaseDate,
                   )
                 ],
               ),
