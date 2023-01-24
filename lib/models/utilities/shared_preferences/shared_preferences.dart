@@ -40,6 +40,11 @@ class SharedPreferences {
         searchHistory.toSet().toList());
   }
 
+  Future<bool> removeMoviesSearchHistory() async {
+    return await (await _getPrefs())!
+        .remove(SharedPreferencesConstants.keyMoviesSearchHistory);
+  }
+
   Future<bool> setBaseUrl(String url) async {
     return await (await _getPrefs())!
         .setString(SharedPreferencesConstants.keyBaseUrl, url);
